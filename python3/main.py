@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import time
+import time, sys, os
 
 
 def partition(array, low, high):
@@ -28,13 +28,17 @@ def quick_sort(array, low, high):
 
 
 def main():
-    unsorted_data = [int(number) for number in open("data.csv", "r").read().split(",")]
+    if not os.path.isfile("../data.csv"):
+        print("You must run generate_dataset.py to generate a dataset.")
+        sys.exit(0)
+
+    unsorted_data = [int(number) for number in open("../data.csv", "r").read().split(",")]
     unsorted_data_size = len(unsorted_data)
 
-    print(f"Sorting unsorted data of {unsorted_data_size} integers...")
+    print(f"[RUNNING IN PYTHON] Sorting unsorted data of {unsorted_data_size} integers...")
     
     benchmark_start = time.time()
-    sorted_data = quick_sort(unsorted_data, 0, unsorted_data_size - 1)
+    quick_sort(unsorted_data, 0, unsorted_data_size - 1)
     benchmark_elapsed = time.time() - benchmark_start
 
     print(f"Sorted array in {benchmark_elapsed:.4f}s.")
