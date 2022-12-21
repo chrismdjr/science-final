@@ -40,6 +40,8 @@ void quick_sort(int array[], int low, int high) {
 
 
 int main() {
+    printf("Opening data.csv...\n");
+    
     struct stat statbuf;
     char* buffer;
     int* data;
@@ -66,7 +68,7 @@ int main() {
     char *token_pointer;
     int i = 0;
 
-    data = (int*) malloc(104857600); // Malloc 100mb.
+    data = (int*) malloc(104857600);
     token_pointer = strtok(buffer, ",");
 
     while (token_pointer) {
@@ -77,7 +79,7 @@ int main() {
     }
     
     int data_size = i;
-    printf("[RUNNING IN C] Sorting unsorted data of %d integers...\n", i);
+    printf("[RUNNING IN C] Sorting unsorted dataset of %d integers...\n", i);
     float benchmark_start = (float)clock()/CLOCKS_PER_SEC;
     
     quick_sort(data, 0, data_size - 1);

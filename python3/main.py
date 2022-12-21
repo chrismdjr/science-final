@@ -28,6 +28,7 @@ def quick_sort(array, low, high):
 
 
 def main():
+    print("Opening data.csv...")
     if not os.path.isfile("../data.csv"):
         print("You must run generate_dataset.py to generate a dataset.")
         sys.exit(0)
@@ -35,7 +36,7 @@ def main():
     unsorted_data = [int(number) for number in open("../data.csv", "r").read().split(",")]
     unsorted_data_size = len(unsorted_data)
 
-    print(f"[RUNNING IN PYTHON] Sorting unsorted data of {unsorted_data_size} integers...")
+    print(f"[RUNNING IN PYTHON] Sorting unsorted dataset of {unsorted_data_size} integers...")
     
     benchmark_start = time.time()
     quick_sort(unsorted_data, 0, unsorted_data_size - 1)
