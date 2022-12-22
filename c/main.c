@@ -80,10 +80,10 @@ int main() {
     
     int data_size = i;
     printf("[RUNNING IN C] Sorting unsorted dataset of %d integers...\n", i);
-    float benchmark_start = (float)clock()/CLOCKS_PER_SEC;
+    clock_t benchmark_start = clock();
     
     quick_sort(data, 0, data_size - 1);
 
-    printf("Sorted array in %0.4fs.\n", (float)clock()/CLOCKS_PER_SEC - benchmark_start);
+    printf("Sorted array in %0.4fs.\n", (float)((clock() - benchmark_start))/CLOCKS_PER_SEC);
     return 0;
 }
